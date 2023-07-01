@@ -26,6 +26,11 @@ const routes: Routes = [
       },
 
       {
+        path: 'tab2/news-details',
+        loadChildren: () => import('../news-details/news-details.module').then(m => m.NewsDetailsPageModule)
+      },
+
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
