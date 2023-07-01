@@ -44,7 +44,7 @@ export class NewsDetailsPage implements OnInit {
     });
   }
 
-  removeFavorite() {
+  /*removeFavorite() {
     this.storage.create().then(() => {
       this.storage.get('favorites').then((favorites: any[]) => {
         if (favorites) {
@@ -55,7 +55,23 @@ export class NewsDetailsPage implements OnInit {
         }
       });
     });
+  }*/
+
+  removeFavorite() {
+    this.storage.create().then(() => {
+      this.storage.get('favorites').then((favorites: any[]) => {
+        if (favorites) {
+          favorites = favorites.filter(
+            (favorite: any) => favorite && favorite.url !== this.article.url
+          );
+          this.storage.set('favorites', favorites);
+          this.isFavorite = false;
+          console.log('Favorites:', favorites);
+        }
+      });
+    });
   }
+  
 
   /*checkFavoriteStatus() {
     this.storage.create().then(() => {
@@ -67,19 +83,19 @@ export class NewsDetailsPage implements OnInit {
       });
     });
   }*/
-
   checkFavoriteStatus() {
     this.storage.create().then(() => {
       this.storage.get('favorites').then((favorites: any[]) => {
         if (favorites && this.article) {
           this.isFavorite = favorites.some(
-            (favorite: any) => favorite.url === this.article.url
+            (favorite: any) => favorite && favorite.url === this.article.url
           );
           console.log('Favorites:', favorites);
         }
       });
     });
   }
+  
   
 
 }
