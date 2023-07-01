@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NewsDetailsService } from '../news-details.service';
-import { NavController } from '@ionic/angular';
+
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab1',
@@ -28,15 +28,4 @@ export class Tab1Page {
   
 }
 
-
-
-
-
-   //constructor(public httpClient: HttpClient) {
-    // this.loadData();
-  /* loadData() {
-    this.httpClient.get(`${API_URL}/top-headlines?sources=techcrunch&apiKey=${API_KEY}`).subscribe(results =>{
-      console.log(results);
-    });
-  }*/
 
